@@ -17,7 +17,7 @@ export class RestApi {
     this.app.use("/product", new ProductModule().routerMount());
   }
 
-  start(port: number) {
+  async start(port: number) {
     this.app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });

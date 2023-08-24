@@ -23,35 +23,17 @@ class UserModule {
 
   routerMount() {
     //get all
-    this.router.get(
-      "/",
-      this.userApiController.getAllUser.bind(this.userApiController)
-    );
+    this.router.get("/", this.userApiController.getAllUser);
     //get by id
-    this.router.get(
-      "/:id",
-      this.userApiController.getUserById.bind(this.userApiController)
-    );
+    this.router.get("/:id", this.userApiController.getUserById);
     //create
-    this.router.post(
-      "/",
-      this.userApiController.createUser.bind(this.userApiController)
-    );
+    this.router.post("/", this.userApiController.createUser);
     //delete
-    this.router.delete(
-      "/:id",
-      this.userApiController.deleteUser.bind(this.userApiController)
-    );
+    this.router.delete("/:id", this.userApiController.deleteUser);
     //update
-    this.router.put(
-      "/:id",
-      this.userApiController.updateUser.bind(this.userApiController)
-    );
+    this.router.put("/:id", this.userApiController.updateUser);
     //find id
-    this.router.get(
-      "/:email",
-      this.userApiController.getUserByEmail.bind(this.userApiController)
-    );
+    this.router.get("/:email", this.userApiController.getUserByEmail);
 
     return this.router;
   }

@@ -1,13 +1,27 @@
 import { Request, Response } from "express";
-import { CreateUserDTO, IUserRepository, UpdateUserDTO, User } from "../../../domain";
+import {
+  CreateUserDTO,
+  IUserRepository,
+  UpdateUserDTO,
+  User,
+} from "../../../domain";
+
+
 
 export class UserApiController {
-  constructor(private readonly userManagementUseCase: IUserRepository) {}
+  constructor(private readonly userManagementUseCase: IUserRepository) {
+    this.createUser = this.createUser.bind(this);
+    this.deleteUser = this.deleteUser.bind(this);
+    this.getAllUser = this.getAllUser.bind(this);
+    this.getUserByEmail = this.getUserByEmail.bind(this);
+    this.getUserById = this.getUserById.bind(this);
+    this.updateUser = this.updateUser.bind(this);
+  }
   async createUser(req: Request, res: Response): Promise<void> {
     const { name, lastName, email, password } = req.body;
 
     const user: CreateUserDTO = { name, lastName, email, password };
-    
+
     res.send(await this.userManagementUseCase.createUser(user));
   }
   async deleteUser(req: Request, res: Response): Promise<void> {
