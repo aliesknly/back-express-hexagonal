@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  mongo:
+    container_name: mongodb-hexagonal
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/db:/data/db
+    networks:
+      - hexagonal
+volumes:
+  data:
+
+networks:
+  hexagonal:
