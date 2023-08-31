@@ -1,20 +1,20 @@
 import express, { Express } from "express";
-import { UserRoutes } from "../../modules/user";
-import { ProductModule } from "../../modules/product/product-module";
 
 export class RestApi {
-  private app: Express;
+  public app: Express;
 
   constructor() {
     this.app = express();
     this.app.use(express.json());
 
-    //routes
-    this.app.get("/", (req, res) => {
-      res.send("hello world");
-    });
-    this.app.use("/user", UserRoutes);
-    this.app.use("/product", new ProductModule().routerMount());
+  }
+
+  addMidelware(middleware: any) {
+    this.app.use(middleware);
+  }
+
+  addRoute(route: string, module: any) {
+    this.app.use(route, module);
   }
 
   async start(port: number) {

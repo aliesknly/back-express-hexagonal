@@ -3,7 +3,7 @@ import { ProductPersistenceMongoDB } from "./adapters/output/product-persistence
 import { ProductUseCase } from "./application/usecase/product-usecase";
 import { ProductHttpController } from "./adapters/input/product-http-controller";
 
-export class ProductModule {
+class ProductModule {
   private router: Router;
   private productDB: ProductPersistenceMongoDB;
   private productUseCase: ProductUseCase;
@@ -26,3 +26,6 @@ export class ProductModule {
     return this.router;
   }
 }
+
+
+export default new ProductModule().routerMount();
