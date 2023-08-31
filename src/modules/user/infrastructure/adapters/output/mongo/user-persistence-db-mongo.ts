@@ -1,19 +1,26 @@
 import { IForPersistenceDBRepository } from "../../../../application/ports/output/for-persistence-db-repository";
 import { CreateUserDTO, User } from "../../../../domain";
 
-const user = new User("name", "lastName", "email", "password");
+import { UserModel } from "./schema/user-mongo-schema";
+import { mapModelToUser, mapUserToModel } from "./user-mapper";
 
 export class UserPersistenceDBMongo implements IForPersistenceDBRepository {
-  getAllUser(): Promise<User[]> {
-    return new Promise((resolve) => {
-      resolve([user]);
-    });
+  private readonly userModel;
+
+  constructor() {
+    this.userModel = UserModel;
+  }
+
+  async getAllUser(): Promise<User[]> {
+    const listOfUsers = (await this.userModel.find()).map(mapUserToModel);
+    return listOfUsers;
   }
   getUserById(id: string): Promise<User> {
     throw new Error("Method not implemented.");
   }
-  createUser(user: CreateUserDTO): Promise<User> {
-    throw new Error("Method not implemented.");
+  async createUser(user: CreateUserDTO): Promise<User> {
+    const newUser = new this.userModel(user);
+    return await newUser.save();
   }
   updateUser(id: string, user: User): Promise<User> {
     throw new Error("Method not implemented.");

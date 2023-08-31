@@ -1,4 +1,4 @@
-import { RestApi, MongoService } from "@/service";
+import { RestApi, MongoService } from "./service";
 import dotenv from "dotenv";
 
 dotenv.config();
