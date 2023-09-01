@@ -1,12 +1,5 @@
 import { Request, Response } from "express";
-import {
-  CreateUserDTO,
-  IUserRepository,
-  UpdateUserDTO,
-  User,
-} from "../../../domain";
-
-
+import { CreateUserDTO, IUserRepository, UpdateUserDTO } from "../../../domain";
 
 export class UserApiController {
   constructor(private readonly userManagementUseCase: IUserRepository) {

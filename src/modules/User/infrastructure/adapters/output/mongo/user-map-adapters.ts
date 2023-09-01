@@ -1,4 +1,4 @@
-import { User } from "@/modules/user/domain";
+import { User } from "@/modules/User/domain";
 import { IUserModel } from "./schema/user-model-interface";
 
 export const mapUserToModel = (user: User): IUserModel => ({
@@ -16,3 +16,12 @@ export const mapModelToUser = (model: IUserModel): User => ({
   code: model.code,
   password: model.password,
 });
+
+export class UserMapAdapter {
+  static mapUserToModel(user: User): IUserModel {
+    return mapUserToModel(user);
+  }
+  static mapModelToUser(model: IUserModel): User {
+    return mapModelToUser(model);
+  }
+}

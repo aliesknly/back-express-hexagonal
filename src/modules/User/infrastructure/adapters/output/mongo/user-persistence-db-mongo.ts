@@ -2,7 +2,7 @@ import { IForPersistenceDBRepository } from "../../../../application/ports/outpu
 import { CreateUserDTO, User } from "../../../../domain";
 
 import { UserModel } from "./schema/user-mongo-schema";
-import { mapModelToUser, mapUserToModel } from "./user-mapper";
+import { mapModelToUser, mapUserToModel } from "./user-map-adapters";
 
 export class UserPersistenceDBMongo implements IForPersistenceDBRepository {
   private readonly userModel;
@@ -28,7 +28,7 @@ export class UserPersistenceDBMongo implements IForPersistenceDBRepository {
   deleteUser(id: string): Promise<User> {
     throw new Error("Method not implemented.");
   }
-  getUserByEmail(email: string): Promise<User> {
-    throw new Error("Method not implemented.");
+  async getUserByEmail(email: string): Promise<User | null> {
+    return await this.userModel.findOne({ email });
   }
 }
