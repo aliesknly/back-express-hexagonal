@@ -1,6 +1,5 @@
 import { IForPersistenceDBRepository } from "@/modules/User/application/ports";
 import { UserModel } from "./schema/user-mongo-schema";
-import { mapModelToUser, mapUserToModel } from "./user-map-adapters";
 import { CreateUserDTO, User } from "@/modules/User/domain";
 
 export class UserPersistenceDBMongo implements IForPersistenceDBRepository {

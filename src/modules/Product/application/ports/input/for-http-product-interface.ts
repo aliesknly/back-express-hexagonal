@@ -1,3 +1,3 @@
 export interface IForHttpProductInterface {
-  getAllProduct(req:any, res:any): Promise<void>;
+  getAllProduct<T, U>(req: T, res: U): Promise<void>;
 }

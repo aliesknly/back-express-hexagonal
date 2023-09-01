@@ -1,3 +1,4 @@
+/* eslint-disable hexagonal-architecture/enforce */
 import { Router } from "express";
 import { ProductPersistenceMongoDB } from "./adapters/output/product-persistence-mongodb";
 import { ProductUseCase } from "./application/usecase/product-usecase";

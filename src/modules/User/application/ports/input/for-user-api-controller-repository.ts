@@ -1,10 +1,10 @@
 import { User } from "@/modules/User/domain";
 
 export interface IForUserApiControllerRepository {
-  getAllUser(req: any, res: any): Promise<User[]>;
-  getUserById(req: any, res: any): Promise<User>;
-  createUser(req: any, res: any): Promise<User>;
-  updateUser(req: any, res: any): Promise<User>;
-  deleteUser(req: any, res: any): Promise<User>;
-  getUserByEmail(req: any, res: any): Promise<User>;
+  getAllUser<T,U>(req: T, res: U): Promise<User[]>;
+  getUserById<T,U>(req: T, res: U): Promise<User>;
+  createUser<T,U>(req: T, res: U): Promise<User>;
+  updateUser<T,U>(req: T, res: U): Promise<User>;
+  deleteUser<T,U>(req: T, res: U): Promise<User>;
+  getUserByEmail<T,U>(req: T, res: U): Promise<User>;
 }

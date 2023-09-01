@@ -1,4 +1,12 @@
-import express, { Express } from "express";
+import express, { Express, RequestHandler ,} from "express";
+
+declare global {
+  namespace Express {
+    interface Request {
+      userId?: string;
+    }
+  }
+}
 
 export class RestApi {
   public app: Express;
@@ -9,11 +17,7 @@ export class RestApi {
 
   }
 
-  addMidelware(middleware: any) {
-    this.app.use(middleware);
-  }
-
-  addRoute(route: string, module: any) {
+  addRoute(route: string, module: RequestHandler) {
     this.app.use(route, module);
   }
 

@@ -1,4 +1,4 @@
-import { compare, compareSync, genSalt, hash } from "bcrypt";
+import { compare,  genSalt, hash } from "bcrypt";
 import { NotFoundException, UnauthorizedException } from "@/common/exceptions";
 import {
   IForPersistenceDBRepository,
@@ -21,7 +21,7 @@ export class UserAuthAdapter implements IForUserAuthRepository {
     if (!isValidPassword) {
       throw new UnauthorizedException(`Invalid email or password`);
     }
-    const token = sign({ id: user.code }, `${enviroments.JWT_SECRET}`);
+    const token = sign({ userId: user.code }, `${enviroments.JWT_SECRET}`);
 
     return token;
   }

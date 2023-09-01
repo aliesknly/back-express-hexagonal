@@ -1,14 +1,6 @@
 import { Request, Response } from "express";
-import {
-  CreateUserDTO,
-  IUserRepository,
-  UpdateUserDTO,
-  User,
-} from "../../domain";
-import {
-  UserMapAdapter,
-  mapModelToUser,
-} from "../output/mongo/user-map-adapters";
+import { CreateUserDTO, IUserRepository, UpdateUserDTO } from "../../domain";
+import { UserMapAdapter } from "../output/mongo/user-map-adapters";
 
 export class UserApiController {
   constructor(private readonly userManagementUseCase: IUserRepository) {
@@ -32,7 +24,7 @@ export class UserApiController {
   }
   async getAllUser(req: Request, res: Response): Promise<void> {
     const userList = await this.userManagementUseCase.getAllUser();
-    res.send(userList?.map(UserMapAdapter.mapModelToUser));
+    res.json(userList?.map(UserMapAdapter.mapModelToUser));
   }
   async getUserByEmail(req: Request, res: Response): Promise<void> {
     const { email } = req.params;

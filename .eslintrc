@@ -1,0 +1,9 @@
+{
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "parserOptions": { "project": ["./tsconfig.json"] },
+  "plugins": ["@typescript-eslint", "hexagonal-architecture"],
+  "rules": {
+    "semi": ["error", "always"],
+    "@typescript-eslint/no-namespace": "off"
+  }
+}
