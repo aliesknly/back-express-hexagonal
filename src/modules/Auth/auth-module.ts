@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { AuthApiController } from "./infrastructure";
-import { UserAuthAdapter } from "../User/infrastructure/adapters/input/user-auth-adapter";
-import { UserPersistenceDBMongo } from "../User/infrastructure/adapters/output/mongo";
+import { UserAuthAdapter } from "../User/infrastructure/input/user-auth-adapter";
+import { UserPersistenceDBMongo } from "../User/infrastructure/output/mongo";
 
 class AuthModule {
   private router: Router;

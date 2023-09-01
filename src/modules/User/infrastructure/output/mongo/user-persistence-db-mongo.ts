@@ -1,8 +1,7 @@
-import { IForPersistenceDBRepository } from "../../../../application/ports/output/for-persistence-db-repository";
-import { CreateUserDTO, User } from "../../../../domain";
-
+import { IForPersistenceDBRepository } from "@/modules/User/application/ports";
 import { UserModel } from "./schema/user-mongo-schema";
 import { mapModelToUser, mapUserToModel } from "./user-map-adapters";
+import { CreateUserDTO, User } from "@/modules/User/domain";
 
 export class UserPersistenceDBMongo implements IForPersistenceDBRepository {
   private readonly userModel;
@@ -12,7 +11,7 @@ export class UserPersistenceDBMongo implements IForPersistenceDBRepository {
   }
 
   async getAllUser(): Promise<User[]> {
-    const listOfUsers = (await this.userModel.find()).map(mapUserToModel);
+    const listOfUsers = await this.userModel.find();
     return listOfUsers;
   }
   getUserById(id: string): Promise<User> {

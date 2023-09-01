@@ -1,4 +1,4 @@
-import { User } from "@/modules/user/domain";
+import { User } from "@/modules/User/domain";
 
 export interface IForUserApiControllerRepository {
   getAllUser(req: any, res: any): Promise<User[]>;

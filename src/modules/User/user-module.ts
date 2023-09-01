@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
-import { UserPersistenceDBMongo } from "./infrastructure/adapters/output/mongo/user-persistence-db-mongo";
-import { UserApiController } from "./infrastructure/adapters/input/user-api-controller";
 import { UserMangagementUseCase } from "./application/use-case/user-management-usecase";
+import { UserPersistenceDBMongo } from "./infrastructure/output/mongo";
+import { UserApiController } from "./infrastructure/input/user-api-controller";
 
 async function call(req: Request, res: Response): Promise<void> {
   res.send(await Promise.resolve("call"));

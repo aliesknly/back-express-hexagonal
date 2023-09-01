@@ -1,5 +1,14 @@
 import { Request, Response } from "express";
-import { CreateUserDTO, IUserRepository, UpdateUserDTO } from "../../../domain";
+import {
+  CreateUserDTO,
+  IUserRepository,
+  UpdateUserDTO,
+  User,
+} from "../../domain";
+import {
+  UserMapAdapter,
+  mapModelToUser,
+} from "../output/mongo/user-map-adapters";
 
 export class UserApiController {
   constructor(private readonly userManagementUseCase: IUserRepository) {
@@ -22,7 +31,8 @@ export class UserApiController {
     res.send(await this.userManagementUseCase.deleteUser(id));
   }
   async getAllUser(req: Request, res: Response): Promise<void> {
-    res.send(await this.userManagementUseCase.getAllUser());
+    const userList = await this.userManagementUseCase.getAllUser();
+    res.send(userList?.map(UserMapAdapter.mapModelToUser));
   }
   async getUserByEmail(req: Request, res: Response): Promise<void> {
     const { email } = req.params;

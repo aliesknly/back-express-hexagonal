@@ -16,7 +16,6 @@ export class UserAuthAdapter implements IForUserAuthRepository {
     if (!user) {
       throw new NotFoundException(`User whit ${email} not found`);
     }
-    console.log(user);
     const isValidPassword = await compare(password, user.password);
 
     if (!isValidPassword) {
